@@ -9,6 +9,7 @@ router.get("/", async (req, res) => {
 		const posts = await Post.find();
 		res.json(posts);
 	} catch (err) {
+		console.log(`Error retrieving posts: ${err}`);
 		res.json({ message: err });
 	}
 });
@@ -19,6 +20,7 @@ router.get("/:postId", async (req, res) => {
 		const post = await Post.findById(req.params.postId);
 		res.json(post);
 	} catch (err) {
+		console.log(`Error retrieving specific post ${req.params.postId}: ${err}`);
 		res.json({ message: err });
 	}
 });
@@ -34,25 +36,30 @@ router.post("/", async (req, res) => {
 		const data = await post.save();
 		res.json(data);
 	} catch (err) {
+		console.log(`Error submitting posts: ${err}`);
 		res.json({ message: err });
 	}
 });
 
 // Update a post
 router.patch("/:postId", async (req, res) => {
-  try {
-    const updatedPost = Post.updateOne({
-      _id: req.params.postId
-    }, {
-      $set: {
-        title: req.body.title
-      },
-    })
-    res.json(updatedPost)
-  } catch (err) {
-    res.json({ message: err })
-  }
-})
+	try {
+		const updatedPost = Post.updateOne(
+			{
+				_id: req.params.postId,
+			},
+			{
+				$set: {
+					title: req.body.title,
+				},
+			}
+		);
+		res.json(updatedPost);
+	} catch (err) {
+		console.log(`Error updating specific post ${req.params.postId}: ${err}`);
+		res.json({ message: err });
+	}
+});
 
 // Delete a specific post
 router.delete("/:postId", async (req, res) => {
@@ -62,6 +69,7 @@ router.delete("/:postId", async (req, res) => {
 		});
 		res.json(removedPost);
 	} catch (err) {
+		console.log(`Error deleting specific post ${req.params.postId}: ${err}`);
 		res.json({ message: err });
 	}
 });

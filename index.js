@@ -13,8 +13,6 @@ app.use(cors());
 app.use("/posts", postsRoutes);
 
 app.get("/", (req, res) => {
-	console.log("Testing");
-
 	res.send("Hello from the homepage");
 });
 
