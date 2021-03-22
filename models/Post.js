@@ -13,6 +13,10 @@ const PostSchema = mongoose.Schema({
 		type: String,
 		default: Date.now,
 	},
+	author: {
+		type: String,
+		required: true,
+	},
 });
 
 const PostModel = mongoose.model("Posts", PostSchema);

@@ -28,10 +28,11 @@ router.get("/:postId", async (req, res) => {
 // Submits a post
 router.post("/", async (req, res) => {
 	try {
-		const { title, description } = req.body;
+		const { title, description, author } = req.body;
 		const post = new Post({
 			title,
 			description,
+			author,
 		});
 		const data = await post.save();
 		res.json(data);
