@@ -1,5 +1,5 @@
-import express from "express";
-import Post from "../models/Post.js";
+const express = require("express");
+const Post = require("../models/Post.js");
 
 const router = express.Router();
 
@@ -74,4 +74,4 @@ router.delete("/:postId", async (req, res) => {
 	}
 });
 
-export default router;
+module.exports = router;

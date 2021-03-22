@@ -1,10 +1,11 @@
-import express from "express";
-import bodyParser from "body-parser";
-import postsRoutes from "./routes/posts.js";
-import mongoose from "mongoose";
-import cors from "cors";
-import "dotenv/config.js";
+const express = require("express");
+const bodyParser = require("body-parser");
+const postsRoutes = require("./routes/posts.js");
+const mongoose = require("mongoose");
+const cors = require("cors");
+require("dotenv/config.js");
 
+const path = __dirname + "/views";
 const DB_URL = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.axprl.mongodb.net/Cluster0?retryWrites=true&w=majority`;
 
 const app = express();
@@ -15,7 +16,7 @@ app.use(cors());
 app.use("/posts", postsRoutes);
 
 app.get("/", (req, res) => {
-	res.send("Hello from the homepage");
+	res.sendFile(`${path}/index.html`);
 });
 
 async function connectToDB() {
