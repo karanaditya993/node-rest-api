@@ -1,6 +1,6 @@
 # Node/Express/MongoDB Rest API
 
-## [Demo](clever-neumann-583.herokuapp.com)
+## [Demo](http://clever-neumann-583.herokuapp.com)
 
 A simple Node/Express/MongoDB🍃 Rest API with a Posts 📫 model
 
