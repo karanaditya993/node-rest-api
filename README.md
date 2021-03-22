@@ -1,2 +1,5 @@
-# node-rest-api
-A Node/Express REST API
+# Node/Express/MongoDB Rest API
+
+A simple Node/Express/MongoDB🍃 Rest API with a Posts 📫 model
+
+
