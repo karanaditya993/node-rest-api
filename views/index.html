@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Example Node API - Posts</title>
+    <title>Example Node API - Blog Posts</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -10,9 +10,45 @@
   </head>
   <body>
     <div>
-      <h2 class="mt-3 p-3">Example Node/Express/MongoDB 🍃 REST API -- Posts 📝</h2>
+      <h2 class="mt-3 p-3">Example Node/Express/MongoDB 🍃 REST API with JWT Authentication</h2>
+      <hr/>
+      <h5 class="mt-3 p-3">Users Route</h5>
+        <div class="card p-3">
+          <div class="card-header">
+            <code>POST /user/register</code>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Registers a user with a username and password</p>
+            <span>Response:</span>
+            <code>
+              {
+                data: {
+                  token: "JWT_TOKEN"
+                }
+              }
+            </code>
+          </div>
+        </div>
+        <div class="card p-3">
+          <div class="card-header">
+            <code>POST /user/login</code>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Logins in a registered user</p>
+            <span>Response:</span>
+            <code>
+              {
+                data: {
+                  token: "JWT_TOKEN"
+                }
+              }
+            </code>
+          </div>
+        </div>
       <hr/>
       <h5 class="mt-3 p-3">Posts Route</h5>
+      <strong>Note: None of the Post Routes will work unless you add the <code>auth-token</code> header to the requests</strong>
+      <span>The <code>auth-token</code> header value is the token you received from registering/logging in</span>
       <div class="card p-3">
         <div class="card-header">
           <code>GET /posts</code>
