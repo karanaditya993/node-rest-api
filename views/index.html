@@ -2,28 +2,45 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Example Node API - Blog Posts</title>
+    <title>Blog Post API</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <style>
-      html, body {
+      body {
         padding: 1rem;
+        background-color: #6272A4;
+        color: white;
+      }
+      .disclaimer * {
+        color: #282A36;
+      }
+      hr {
+        border-top: 1px solid white;
       }
       code {
         font-family: Consolas,"courier new";
-        font-weight: 700;
-        color: #9A3233;
-        background-color: #f1f1f1;
+        /* font-weight: 700; */
+        color: #FF5555;
         padding: 2px;
         font-size: 105%;
+      }
+      .card {
+        background-color: #282A36;
+        color: #b2beb5;
+      }
+      .card-header {
+        border-bottom: 1px solid white;
+      }
+      strong {
+        color: #F5F5F5;
       }
     </style>
   </head>
   <body>
     <div>
-      <h2 class="mt-3 p-3">Blog Post 🗒 API with JWT Authentication 🔐</h2>
+      <h2 class="mt-3 p-3">🗒 🔐 Blog Post API with JWT Authentication</h2>
       <hr/>
       <h5 class="mt-3 p-3">User Route 👤</h5>
         <div class="card p-3 mb-4">
@@ -85,15 +102,26 @@
         </div>
       <hr/>
       <h5 class="mt-3 p-3">Posts Route 📝</h5>
-      <strong>Note: None of the Post Routes will work unless you add the <code>auth-token</code> header to the requests</strong>
-      <div class="mb-4">The <code>auth-token</code> header value is the token you received from registering/logging in</div>
+      <div class="disclaimer">
+        <strong>IMPORTANT NOTE: None of the Post Routes will work unless you add the <code>auth-token</code> (received from registering/logging in) header to the requests</strong>
+      </div>
       <div class="card p-3 mb-4">
         <div class="card-header">
           <code>GET /posts</code>
         </div>
         <div class="card-body">
           <p class="card-text">Returns all post records</p>
-          <a href="/posts" class="btn btn-primary" target="_blank">Ping Route</a>
+          <strong>Response Body</strong>
+          <div>
+            <code>
+              {
+                _id: String,
+                title: String,
+                description: String,
+                date: Date
+              }
+            </code>
+          </div>
         </div>
       </div>
       <div class="card p-3 mb-4">
@@ -101,7 +129,7 @@
           <code>GET /posts/:postId</code>
         </div>
         <div class="card-body">
-          <p class="card-text">Returns a specific post</p>
+          <p class="card-text">Returns a specific post record</p>
           <strong>Parameters</strong>
           <ul>
             <li>
